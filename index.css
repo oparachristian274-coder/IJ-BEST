@@ -1,0 +1,421 @@
+
+/* GENERAL STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: #fff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* HEADER */
+.header {
+    width: 100%;
+    min-height: 80px;
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #fff;
+    box-shadow: 0 2px 12px #00000012;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #173c2b;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #c69b55;
+}
+
+/* DESKTOP NAVIGATION */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.desktop-nav a {
+    color: #222;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.desktop-nav a:hover {
+    color: #c69b55;
+}
+
+/* SHOP BUTTON */
+.shop-button,
+.main-button,
+.product-button {
+    display: inline-block;
+    background: #173c2b;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.shop-button:hover,
+.main-button:hover,
+.product-button:hover {
+    background: #c69b55;
+    color: #fff;
+}
+
+/* HAMBURGER MENU: HIDDEN ON DESKTOP */
+.menu-container {
+    display: none;
+    position: relative;
+}
+
+#menu-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+/* THREE-LINE HAMBURGER ICON */
+.hamburger {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    background: #173c2b;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 200px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 6px 18px #00000020;
+    border-radius: 6px;
+    z-index: 1100;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px;
+    color: #222;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: #f4f4f4;
+    color: #c69b55;
+}
+
+/* OPEN DROPDOWN WHEN HAMBURGER IS CLICKED */
+#menu-toggle:checked ~ .dropdown-menu {
+    display: block;
+}
+
+/* OPTIONAL ANIMATION FOR HAMBURGER */
+#menu-toggle:checked + .hamburger span:first-child {
+    transform: translateY(8px) rotate(45deg);
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked + .hamburger span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    padding: 70px 7%;
+    background:
+        linear-gradient(90deg, #000000bb, #00000030),
+        url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.hero-content {
+    max-width: 570px;
+}
+
+.subtitle {
+    color: #c69b55;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #d9b574;
+}
+
+.hero-content > p:not(.subtitle) {
+    margin-bottom: 28px;
+}
+
+/* GENERAL SECTIONS */
+.section {
+    padding: 80px 7%;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 34px;
+    margin-bottom: 35px;
+}
+
+/* PRODUCTS */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.product-card {
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px #00000008;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px #00000012;
+}
+
+.product-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    margin-top: 15px;
+}
+
+.price {
+    color: #173c2b;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 8px 0 15px;
+}
+
+.product-button {
+    padding: 9px 18px;
+}
+
+/* ABOUT */
+.about {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+    background: #f8f7f3;
+}
+
+.about-image,
+.about-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-image img {
+    width: 100%;
+    max-height: 430px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.about-content h2 {
+    margin-bottom: 20px;
+}
+
+.about-content p:not(.subtitle) {
+    margin-bottom: 25px;
+}
+
+/* SERVICES */
+.services {
+    background: #fff;
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    padding: 30px 20px;
+    background: #f8f7f3;
+    border-radius: 8px;
+}
+
+.service-card h3 {
+    margin-bottom: 12px;
+}
+
+/* CONTACT */
+.contact {
+    background: #f8f7f3;
+}
+
+.contact > p:not(.subtitle) {
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+footer {
+    padding: 25px 7%;
+    text-align: center;
+    background: #173c2b;
+    color: #fff;
+}
+
+/* TABLET AND MOBILE */
+@media screen and (max-width: 900px) {
+
+    /* Hide desktop links */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* Show hamburger */
+    .menu-container {
+        display: block;
+        order: 3;
+    }
+
+    .header {
+        padding: 15px 4%;
+        gap: 12px;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    .shop-button {
+        order: 2;
+    }
+
+    .product-container,
+    .service-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* SMALL MOBILE SCREENS */
+@media screen and (max-width: 600px) {
+
+    .header {
+        min-height: 70px;
+        padding: 12px 4%;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .shop-button {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .hamburger {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero {
+        min-height: 480px;
+        padding: 55px 6%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .section {
+        padding: 55px 6%;
+    }
+
+    .section h2 {
+        font-size: 28px;
+    }
+
+    .product-container,
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        height: 300px;
+    }
+
+    .about {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+}
