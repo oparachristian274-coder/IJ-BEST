@@ -9,17 +9,17 @@
 <body>
 
     <!-- HEADER -->
-    <header class="header">
+    <header class="header" lang="en">
 
         <a href="#home" class="logo">IJ <span>FASHION</span></a>
 
         <!-- DESKTOP NAVIGATION -->
         <nav class="desktop-nav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#shop">Shop</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" data-en="Home" data-fr="Accueil">Home</a>
+            <a href="#about" data-en="About" data-fr="À propos">About</a>
+            <a href="#services" data-en="Services" data-fr="Services">Services</a>
+            <a href="#shop" data-en="Shop" data-fr="Boutique">Shop</a>
+            <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
         </nav>
 
         <!-- MOBILE AND TABLET HAMBURGER MENU -->
@@ -34,16 +34,65 @@
             </label>
 
             <nav class="dropdown-menu">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#shop">Shop</a>
-                <a href="#contact">Contact</a>
+                <a href="#home" data-en="Home" data-fr="Accueil">Home</a>
+                <a href="#about" data-en="About" data-fr="À propos">About</a>
+                <a href="#services" data-en="Services" data-fr="Services">Services</a>
+                <a href="#shop" data-en="Shop" data-fr="Boutique">Shop</a>
+                <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+                <button
+                    type="button"
+                    class="language-toggle"
+                    data-language="en"
+                    aria-label="Switch to French"
+                    aria-pressed="false">
+                    FR
+                </button>
             </nav>
 
         </div>
 
-        <a href="#shop" class="shop-button">Shop Now</a>
+        <div class="header-actions">
+            <a href="#shop" class="shop-button" data-en="Shop Now" data-fr="Acheter">Shop Now</a>
+
+            <button
+                type="button"
+                class="language-toggle"
+                data-language="en"
+                aria-label="Switch to French"
+                aria-pressed="false">
+                FR
+            </button>
+        </div>
+
+        <script>
+            const header = document.querySelector(".header");
+            const languageToggles = header.querySelectorAll(".language-toggle");
+
+            languageToggles.forEach((languageToggle) => {
+                languageToggle.addEventListener("click", () => {
+                    const language = languageToggle.dataset.language === "en" ? "fr" : "en";
+
+                    document.querySelectorAll(".header, .hero, #shop, #about, #services, #contact, footer").forEach((section) => {
+                        section.lang = language;
+                    });
+
+                    languageToggles.forEach((toggle) => {
+                        toggle.dataset.language = language;
+                        toggle.textContent = language === "en" ? "FR" : "EN";
+                        toggle.setAttribute("aria-label", `Switch to ${language === "en" ? "French" : "English"}`);
+                        toggle.setAttribute("aria-pressed", String(language === "fr"));
+                    });
+
+                    document.querySelectorAll("[data-en][data-fr]").forEach((label) => {
+                        label.textContent = language === "fr" ? label.dataset.fr : label.dataset.en;
+                    });
+
+                    document.querySelectorAll("[data-alt-en][data-alt-fr]").forEach((image) => {
+                        image.alt = language === "fr" ? image.dataset.altFr : image.dataset.altEn;
+                    });
+                });
+            });
+        </script>
 
     </header>
 
@@ -52,19 +101,20 @@
 
         <div class="hero-content">
 
-            <p class="subtitle">WELCOME TO IJ BEST FASHION</p>
+            <p class="subtitle" data-en="WELCOME TO IJ BEST FASHION" data-fr="BIENVENUE CHEZ IJ BEST FASHION">WELCOME TO IJ BEST FASHION</p>
 
             <h1>
-                Style That Makes<br>
-                <span>You Stand Out.</span>
+                <span class="hero-title-first" data-en="Style That Makes" data-fr="Un style qui vous">Style That Makes</span><br>
+                <span data-en="You Stand Out." data-fr="distingue.">You Stand Out.</span>
             </h1>
 
             <p>
-                Discover stylish, comfortable and quality clothing
-                designed to give you confidence every day.
+                <span data-en="Discover stylish, comfortable and quality clothing designed to give you confidence every day."
+                    data-fr="Découvrez des vêtements élégants, confortables et de qualité, pensés pour vous donner confiance chaque jour.">Discover stylish, comfortable and quality clothing
+                    designed to give you confidence every day.</span>
             </p>
 
-            <a href="#shop" class="main-button">
+            <a href="#shop" class="main-button" data-en="Explore Collection" data-fr="Découvrir la collection">
                 Explore Collection
             </a>
 
@@ -75,39 +125,81 @@
     <!-- SHOP SECTION -->
     <section class="shop section" id="shop">
 
-        <p class="subtitle">OUR COLLECTION</p>
-        <h2>Featured Products</h2>
+        <p class="subtitle" data-en="OUR COLLECTION" data-fr="NOTRE COLLECTION">OUR COLLECTION</p>
+        <h2 data-en="Featured Products" data-fr="Nos produits vedettes">Featured Products</h2>
 
         <div class="product-container">
 
             <div class="product-card">
                 <img
-                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
-                    alt="Classic T-shirt">
+                    src="product-2.jpeg"
+                    alt="Classic T-shirt"
+                    data-alt-en="Classic T-shirt"
+                    data-alt-fr="T-shirt classique">
 
-                <h3>Classic T-Shirt</h3>
-                <p class="price">₦8,000</p>
-                <a href="#contact" class="product-button">Order Now</a>
+                <h3 data-en="Classic T-Shirt" data-fr="T-shirt classique">Classic T-Shirt</h3>
+                <p class="price">13,000 CFA</p>
+                <a href="#contact" class="product-button" data-en="Order Now" data-fr="Commander">Order Now</a>
             </div>
 
             <div class="product-card">
                 <img
-                    src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80"
-                    alt="Classic jeans">
+                    src="product-5.jpeg"
+                    alt="Classic jeans"
+                    data-alt-en="Classic jeans"
+                    data-alt-fr="Jean classique">
 
-                <h3>Classic Jeans</h3>
-                <p class="price">₦15,000</p>
-                <a href="#contact" class="product-button">Order Now</a>
+                <h3 data-en="Classic Jeans" data-fr="Jean classique">Classic Jeans</h3>
+                <p class="price">16,000 CFA</p>
+                <a href="#contact" class="product-button" data-en="Order Now" data-fr="Commander">Order Now</a>
             </div>
 
             <div class="product-card">
                 <img
-                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
-                    alt="Fashion sneakers">
+                    src="product-3.jpeg"
+                    alt="Long-sleeve shirt"
+                    data-alt-en="Long-sleeve shirt"
+                    data-alt-fr="Chemise à manches longues">
 
-                <h3>Fashion Sneakers</h3>
-                <p class="price">₦25,000</p>
-                <a href="#contact" class="product-button">Order Now</a>
+                <h3 data-en="Long-Sleeve Shirt" data-fr="Chemise à manches longues">Long-Sleeve Shirt</h3>
+                <p class="price">13,000 CFA</p>
+                <a href="#contact" class="product-button" data-en="Order Now" data-fr="Commander">Order Now</a>
+            </div>
+
+            <div class="product-card">
+                <img
+                    src="product-4.jpeg"
+                    alt="Hooded jacket"
+                    data-alt-en="Hooded jacket"
+                    data-alt-fr="Veste à capuche">
+
+                <h3 data-en="Hooded Jacket" data-fr="Veste à capuche">Hooded Jacket</h3>
+                <p class="price" data-en="18,000 CFA" data-fr="18,000 CFA">18,000 CFA</p>
+                <a href="#contact" class="product-button" data-en="Order Now" data-fr="Commander">Order Now</a>
+            </div>
+
+            <div class="product-card">
+                <img
+                    src="product-6.jpeg"
+                    alt="long-sleeve shirt"
+                    data-alt-en="long-sleeve shirt"
+                    data-alt-fr="Chemise à manches longues">
+
+                <h3 data-en="Long-Sleeve Shirt" data-fr="Chemise à manches longues">Long-Sleeve Shirt</h3>
+                <p class="price" data-en="16,000 CFA" data-fr="16,000 CFA">16,000 CFA</p>
+                <a href="#contact" class="product-button" data-en="Order Now" data-fr="Commander">Order Now</a>
+            </div>
+
+            <div class="product-card">
+                <img
+                    src="product-1.jpeg"
+                    alt="Classic T-shirt"
+                    data-alt-en="Classic T-shirt"
+                    data-alt-fr="T-shirt classique">
+
+                <h3 data-en="Classic T-shirt" data-fr="T-shirt classique">Classic T-shirt</h3>
+                <p class="price" data-en="16,000 CFA" data-fr="16,000 CFA">16,000 CFA</p>
+                <a href="#contact" class="product-button" data-en="Order Now" data-fr="Commander">Order Now</a>
             </div>
 
         </div>
@@ -120,22 +212,25 @@
         <div class="about-image">
             <img
                 src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80"
-                alt="Fashion clothing collection">
+                alt="Fashion clothing collection"
+                data-alt-en="Fashion clothing collection"
+                data-alt-fr="Collection de vêtements tendance">
         </div>
 
         <div class="about-content">
 
-            <p class="subtitle">ABOUT US</p>
+            <p class="subtitle" data-en="ABOUT US" data-fr="À PROPOS DE NOUS">ABOUT US</p>
 
-            <h2>Fashion For Every Occasion</h2>
+            <h2 data-en="Fashion For Every Occasion" data-fr="La mode pour chaque occasion">Fashion For Every Occasion</h2>
 
-            <p>
+            <p data-en="IJ Best Fashion focuses on providing stylish and quality clothing for people who want to look and feel confident. We aim to make fashion accessible and enjoyable."
+                data-fr="IJ Best Fashion s'engage à proposer des vêtements élégants et de qualité pour celles et ceux qui veulent se sentir bien et avoir confiance en eux. Notre objectif est de rendre la mode accessible et agréable.">
                 IJ Best Fashion focuses on providing stylish and
                 quality clothing for people who want to look and feel
                 confident. We aim to make fashion accessible and enjoyable.
             </p>
 
-            <a href="#services" class="main-button">Learn More</a>
+            <a href="#services" class="main-button" data-en="Learn More" data-fr="En savoir plus">Learn More</a>
 
         </div>
 
@@ -144,29 +239,32 @@
     <!-- SERVICES SECTION -->
     <section class="services section" id="services">
 
-        <p class="subtitle">WHAT WE OFFER</p>
-        <h2>Our Services</h2>
+        <p class="subtitle" data-en="WHAT WE OFFER" data-fr="CE QUE NOUS PROPOSONS">WHAT WE OFFER</p>
+        <h2 data-en="Our Services" data-fr="Nos services">Our Services</h2>
 
         <div class="service-container">
 
             <div class="service-card">
-                <h3>👕 Quality Clothing</h3>
-                <p>
+                <h3 data-en="👕 Quality Clothing" data-fr="👕 Vêtements de qualité">👕 Quality Clothing</h3>
+                <p data-en="Explore clothing options for different styles and occasions."
+                    data-fr="Découvrez des vêtements adaptés à différents styles et occasions.">
                     Explore clothing options for different styles
                     and occasions.
                 </p>
             </div>
 
             <div class="service-card">
-                <h3>🛍️ Easy Ordering</h3>
-                <p>
+                <h3 data-en="🛍️ Easy Ordering" data-fr="🛍️ Commande facile">🛍️ Easy Ordering</h3>
+                <p data-en="Contact us to ask questions and place your orders."
+                    data-fr="Contactez-nous pour poser vos questions et passer commande.">
                     Contact us to ask questions and place your orders.
                 </p>
             </div>
 
             <div class="service-card">
-                <h3>🚚 Delivery Options</h3>
-                <p>
+                <h3 data-en="🚚 Delivery Options" data-fr="🚚 Options de livraison">🚚 Delivery Options</h3>
+                <p data-en="Contact us to confirm delivery availability and charges."
+                    data-fr="Contactez-nous pour connaître les disponibilités et les frais de livraison.">
                     Contact us to confirm delivery availability
                     and charges.
                 </p>
@@ -179,15 +277,16 @@
     <!-- CONTACT SECTION -->
     <section class="contact section" id="contact">
 
-        <p class="subtitle">GET IN TOUCH</p>
+        <p class="subtitle" data-en="GET IN TOUCH" data-fr="CONTACTEZ-NOUS">GET IN TOUCH</p>
 
-        <h2>Ready to Upgrade Your Style?</h2>
+        <h2 data-en="Ready to Upgrade Your Style?" data-fr="Prêt à renouveler votre style ?">Ready to Upgrade Your Style?</h2>
 
-        <p>
+        <p data-en="Contact us for product information, prices and orders."
+            data-fr="Contactez-nous pour obtenir des informations sur les produits, les prix et les commandes.">
             Contact us for product information, prices and orders.
         </p>
 
-        <a href="https://wa.me/YOURNUMBER" class="main-button">
+        <a href="https://wa.me/YOURNUMBER" class="main-button" data-en="Contact Us on WhatsApp" data-fr="Contactez-nous sur WhatsApp">
             Contact Us on WhatsApp
         </a>
 
@@ -195,7 +294,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 IJ Best Fashion. All rights reserved.</p>
+        <p data-en="© 2026 IJ Best Fashion. All rights reserved." data-fr="© 2026 IJ Best Fashion. Tous droits réservés.">© 2026 IJ Best Fashion. All rights reserved.</p>
     </footer>
 
 </body>

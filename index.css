@@ -63,6 +63,37 @@ a {
     color: #c69b55;
 }
 
+/* HEADER ACTIONS */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.language-toggle {
+    padding: 10px 12px;
+    border: 1px solid #173c2b;
+    border-radius: 5px;
+    background: #fff;
+    color: #173c2b;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.language-toggle:hover {
+    background: #173c2b;
+    color: #fff;
+}
+
+.language-toggle:focus-visible {
+    outline: 2px solid #c69b55;
+    outline-offset: 3px;
+}
+
 /* SHOP BUTTON */
 .shop-button,
 .main-button,
@@ -147,6 +178,10 @@ a {
     color: #c69b55;
 }
 
+.dropdown-menu .language-toggle {
+    display: none;
+}
+
 /* OPEN DROPDOWN WHEN HAMBURGER IS CLICKED */
 #menu-toggle:checked ~ .dropdown-menu {
     display: block;
@@ -199,6 +234,10 @@ a {
 
 .hero h1 span {
     color: #d9b574;
+}
+
+.hero h1 .hero-title-first {
+    color: inherit;
 }
 
 .hero-content > p:not(.subtitle) {
@@ -342,6 +381,21 @@ footer {
         order: 3;
     }
 
+    .header-actions {
+        order: 2;
+    }
+
+    .header-actions .language-toggle {
+        display: none;
+    }
+
+    .dropdown-menu .language-toggle {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+        text-align: left;
+    }
+
     .header {
         padding: 15px 4%;
         gap: 12px;
@@ -349,10 +403,6 @@ footer {
 
     .logo {
         margin-right: auto;
-    }
-
-    .shop-button {
-        order: 2;
     }
 
     .product-container,
@@ -376,6 +426,15 @@ footer {
 
     .shop-button {
         padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .language-toggle {
+        padding: 8px 9px;
         font-size: 12px;
     }
 
